@@ -29,27 +29,27 @@ public class QuickSort {
 
     private void sortArray(int[] a, int begin, int end) {
         if(begin < end) {
-            int mid = split(array, begin, end);
-            sortArray(array, begin, mid - 1);
-            sortArray(array, mid + 1, end);
+            int mid = split(a, begin, end);
+            sortArray(a, begin, mid - 1);
+            sortArray(a, mid + 1, end);
         }
     }
 
     private int split(int[] a, int start, int finish) {
-        int mid = array[finish];
+        int mid = a[finish];
         int i = (start - 1);
         for(int j = start; j < finish; j++) {
-            if(array[j] <= mid) {
+            if(a[j] <= mid) {
                 i++;
-                int t = array[i];
-                array[i] = array[j];
-                array[j] = t;
+                int t = a[i];
+                a[i] = a[j];
+                a[j] = t;
                 swapCount++;
             }
         }
-        int t = array[i+1];
-        array[i+1] = array[finish];
-        array[finish] = t;
+        int t = a[i+1];
+        a[i+1] = a[finish];
+        a[finish] = t;
         swapCount++;
 
         return i+1;

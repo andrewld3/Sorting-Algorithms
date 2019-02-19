@@ -14,11 +14,13 @@ public class Main {
             System.out.println();
             System.out.println("MENU");
             System.out.println("1) Generate Random Number List");
-            System.out.println("2) Print Number List");
-            System.out.println("3) Bubble Sort");
-            System.out.println("4) Insertion Sort");
-            System.out.println("5) Quick Sort");
-            System.out.println("6) Quit");
+            System.out.println("2) Generate Worst Case List");
+            System.out.println("3) Generate Best Case List");
+            System.out.println("4) Print Number List");
+            System.out.println("5) Bubble Sort");
+            System.out.println("6) Insertion Sort");
+            System.out.println("7) Quick Sort");
+            System.out.println("8) Quit");
             System.out.print("Choice: ");
             choice = in.nextInt();
 
@@ -27,24 +29,30 @@ public class Main {
                     original = createRandomList();
                     break;
                 case 2:
-                    printArray(original);
+                    original = worstCaseList();
                     break;
                 case 3:
+                    original = bestCaseList();
+                    break;
+                case 4:
+                    printArray(original);
+                    break;
+                case 5:
                     unsorted = original.clone();
                     sortBubble(unsorted);
                     break;
-                case 4:
+                case 6:
                     unsorted = original.clone();
                     sortInsertion(unsorted);
                     break;
-                case 5:
+                case 7:
                     unsorted = original.clone();
                     sortQuick(unsorted);
                     break;
                 default:
                     break;
             }
-        } while(choice != 6);
+        } while(choice != 8);
     }
 
     private static int[] createRandomList() {
@@ -60,6 +68,34 @@ public class Main {
         return randoms.toArray();
     }
 
+    private static int[] worstCaseList() {
+        int quantity;
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Enter Quantity of Numbers: ");
+        quantity = in.nextInt();
+        int[] worstList = new int[quantity];
+        for(int i= 0; i < quantity; i++){
+            worstList[i] = quantity - i;
+        }
+
+        return worstList;
+    }
+
+    private static int[] bestCaseList() {
+        int quantity;
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Enter Quantity of Numbers: ");
+        quantity = in.nextInt();
+        int[] bestList = new int[quantity];
+        for(int i= 0; i < quantity; i++){
+            bestList[i] = i;
+        }
+
+        return bestList;
+    }
+
     private static void printArray(int[] nums) {
         for(int i = 0; i < nums.length; i++) {
             if(i % 10 == 0){
@@ -71,6 +107,7 @@ public class Main {
     }
 
     private static void sortQuick(int[] unsortedArray) {
+        System.out.println("Quick Sort");
         QuickSort q = new QuickSort(unsortedArray);
         q.startSort();
     }
