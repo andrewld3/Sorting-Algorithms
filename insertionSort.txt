@@ -1,0 +1,16 @@
+public void sortArray() {
+        timeIn = System.currentTimeMillis();
+        for(int i = 1; i < arrayLength; ++i) {		O(n) time complexity
+            int target = array[i];
+            int j = i-1;
+
+            while(j >=0 && array[j] > target) {		O(log(n)) time complexity
+                array[j+1] = array[j];
+                j = j -1;
+                swapCount++;
+            }
+            array[j+1] = target;
+        }
+        timeOut = System.currentTimeMillis();		Total Estimated Complexity: O(nlog(n)) complexity.
+        printSwapCount();
+    }

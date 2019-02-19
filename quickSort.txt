@@ -1,0 +1,27 @@
+private void sortArray(int[] a, int begin, int end) {
+        if(begin < end) {					O(n) time complexity
+            int mid = split(a, begin, end);
+            sortArray(a, begin, mid - 1);
+            sortArray(a, mid + 1, end);
+        }
+    }
+
+    private int split(int[] a, int start, int finish) {
+        int mid = a[finish];
+        int i = (start - 1);
+        for(int j = start; j < finish; j++) {			O(n) time complexity
+            if(a[j] <= mid) {					O(n) time complexity
+                i++;
+                int t = a[i];
+                a[i] = a[j];
+                a[j] = t;
+                swapCount++;
+            }
+        }
+        int t = a[i+1];
+        a[i+1] = a[finish];
+        a[finish] = t;
+        swapCount++;
+
+        return i+1;						Total Time complexity estimate: O(n^2)
+    }

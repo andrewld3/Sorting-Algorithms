@@ -1,0 +1,19 @@
+public void sortArray() {
+        timeIn = System.currentTimeMillis();
+        for(int i = 0; i < arrayLength - 1; i++) {			O(n) time complexity
+            notDone = false;
+            for(int j = 0; j < arrayLength-i-1; j++) {			O(n) time complexity
+                if(array[j] > array[j+1]) {				O(1) time complexity
+                    int a = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = a;
+                    swapCount++;
+                    notDone = true;
+                }
+            }
+            if(notDone == false)					0(1) time complexity
+                break;
+        }
+        timeOut = System.currentTimeMillis();
+        printSwapCount();						Total Complexity Estimate: 0(n^2).
+    
